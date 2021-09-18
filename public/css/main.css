@@ -4174,7 +4174,7 @@ body {
 }
 
 .hero__img {
-  background: url("http://127.0.0.1:8000/imgs/hero.png") no-repeat;
+  background: url("https://khabeer-webapp.herokuapp.com/imgs/hero.png") no-repeat;
   background-size: cover;
   height: 100vh;
   z-index: -1;
