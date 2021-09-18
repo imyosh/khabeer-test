@@ -1,0 +1,119 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  min-width: 170px;
+
+  height: 100%;
+  // background: linear-gradient(to right, #202125 40%, #16171b 40%);
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--left {
+      background: #202125;
+      width: 40%;
+    }
+
+    &--right {
+      background: #16171b;
+      width: 60%;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+    margin-bottom: 0.5rem;
+
+    &--right {
+      margin-top: 1.2rem;
+
+      &--botton {
+        margin-bottom: -0.7rem;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    color: #878889;
+    font-size: 1.1rem;
+    font-weight: bold;
+    -webkit-user-drag: none;
+
+    transition: all 0.5s;
+
+    &--text {
+      justify-content: start;
+      &:hover,
+      &:active {
+        color: #3ab899;
+        transform: translateX(8px);
+      }
+    }
+  }
+
+  &__item {
+    margin: 1.2rem;
+    height: 3rem;
+  }
+
+  &__icon {
+    height: 2.1rem;
+    width: 2.1rem;
+
+    &--trans {
+      height: 2.2rem;
+      width: 2.2rem;
+      margin-left: 7px;
+    }
+    margin-top: 7px;
+    fill: white;
+    color: white;
+    z-index: 200;
+  }
+
+  span {
+    background: #1c1d21;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    line-height: 26px;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.5s;
+
+    &:hover,
+    &:target,
+    &:visited {
+      background: #3ab899;
+      transform: scale(1.08) translate3d(0, 0, 0) perspective(1px);
+    }
+  }
+}
+
+.for-text {
+  color: #3ab899 !important;
+  transform: translateX(8px);
+}
+
+.for-icon {
+  background: #3ab899 !important;
+  transform: scale(1.1) translate3d(0, 0, 0) perspective(1px);
+}
+
+.active-link {
+  span {
+    background: #3ab899;
+    transform: scale(1.08) translate3d(0, 0, 0) perspective(1px);
+  }
+
+  color: #3ab899;
+}

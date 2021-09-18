@@ -1,0 +1,156 @@
+$purple: #9aff6c;
+$light-teal: #3a3a3a;
+$light-purple: #3a3a3a;
+@mixin gear($gear-count, $center-size, $gear-size, $gear-width, $rotate, $color) {
+  position: relative;
+  width: $center-size;
+  height: $center-size;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+  > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $gear-width;
+    height: $gear-size;
+    margin: -($gear-size/2);
+    background: $color;
+
+    $angle: (360 / $gear-count);
+    //$rotate: 5;
+
+    @for $i from 1 through $gear-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rotate * 1deg) translate($center-size / 2);
+      }
+      $rotate: $rotate + $angle;
+    }
+  }
+}
+.geers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+  transform: scale(0.7);
+}
+
+.gear-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 10em;
+  margin-top: 20.8em;
+  margin-right: -2.35em;
+}
+.center-circle {
+  @include gear(
+    $gear-count: 8,
+    $center-size: 10em,
+    $gear-size: 1.25em,
+    $gear-width: 1.25em,
+    $rotate: 5.5,
+    $color: $light-teal
+  );
+  animation: spin 10s linear infinite;
+}
+.ring {
+  display: block;
+  position: absolute;
+  //   width: 6em;
+  //   height: 6em;
+  width: 9.5em;
+  height: 9.5rem;
+  border-radius: 50%;
+  border: solid 1.75em $light-teal;
+  //background-color:$purple;
+}
+//gear1 end
+
+//gear2
+.gear-container2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20em;
+  height: 20em;
+}
+.center-circle2 {
+  @include gear(
+    $gear-count: 12,
+    $center-size: 20em,
+    $gear-size: 3em,
+    $gear-width: 3em,
+    $rotate: 5,
+    $color: $purple
+  );
+  margin: auto;
+  animation: spin-r 15s linear infinite;
+}
+.tooth {
+  display: block;
+  border-radius: 7px;
+  //background: $purple;
+}
+.ring2 {
+  display: block;
+  position: absolute;
+  //   width: 15em;
+  //   height: 15em;
+
+  width: 20em;
+  height: 20em;
+  border-radius: 50%;
+  border: solid 3em $purple;
+}
+//gear2 end
+
+//gear3
+.gear-container3 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15em;
+  height: 15em;
+  margin-top: -23.15em;
+  margin-left: -1.75em;
+}
+.center-circle3 {
+  @include gear(
+    $gear-count: 10,
+    $center-size: 16em,
+    $gear-size: 2em,
+    $gear-width: 2em,
+    $rotate: 5.5,
+    $color: #3a3a3a
+  );
+  animation: spin 12.5s linear infinite;
+}
+.ring3 {
+  display: block;
+  position: absolute;
+  //   width: 11em;
+  //   height: 11em;
+  width: 15.5em;
+  height: 15.5em;
+  border-radius: 50%;
+  border: solid 2em #3a3a3a;
+}
+//gear3 end
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-r {
+  100% {
+    transform: rotate(-360deg);
+  }
+}

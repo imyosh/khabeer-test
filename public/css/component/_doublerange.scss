@@ -1,0 +1,121 @@
+.multi-range-slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.slider {
+  position: relative;
+  z-index: 1;
+  height: 10px;
+  margin: 0 15px;
+}
+.slider > .track {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: #eaeaea;
+}
+.slider > .range {
+  position: absolute;
+  z-index: 2;
+  left: 25%;
+  right: 25%;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: $color-theme;
+}
+.slider > .thumb {
+  position: absolute;
+  z-index: 3;
+  width: 25px;
+  height: 25px;
+  background-color: $color-theme;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(98, 0, 238, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.thumb__icon {
+  width: 1.8rem;
+  fill: white;
+  height: 1.8rem;
+  transform: translate(3px, 3px);
+  cursor: pointer;
+
+  // svg {
+  // cursor: pointer;
+
+  // }
+}
+.slider > .thumb.left {
+  left: 25%;
+  transform: translate(-15px, -8px);
+}
+.slider > .thumb.right {
+  right: 25%;
+  transform: translate(15px, -8px);
+}
+.slider > .thumb.hover {
+  box-shadow: 0 0 0 5px rgba($color-theme, 0.3);
+}
+.slider > .thumb.active {
+  box-shadow: 0 0 0 8px rgba($color-theme, 0.5);
+}
+
+input[type="range"] {
+  position: absolute;
+  pointer-events: none;
+  -moz-pointer-events: initial;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  z-index: 21;
+  height: 10px;
+  width: 100%;
+  opacity: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  /*Webkit Browsers like Chrome and Safari*/
+  pointer-events: auto;
+  //   pointer-events: all;
+  -moz-pointer-events: all;
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
+  border: 0 none;
+  background-color: red;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  /*Firefox*/
+  pointer-events: auto;
+  -moz-pointer-events: all;
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
+  border: 0 none;
+  background-color: red;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+input[type="range"]::-ms-thumb {
+  /*Internet Explorer*/
+  pointer-events: auto;
+  -moz-pointer-events: all;
+  width: 25px;
+  height: 25px;
+  border-radius: 0;
+  border: 0 none;
+  background-color: red;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}

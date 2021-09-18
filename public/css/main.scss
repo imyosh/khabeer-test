@@ -1,0 +1,177 @@
+@import "component/mixins";
+@import "component/variables";
+@import "component/collector";
+@import "component/tooltip";
+@import "component/button";
+@import "component/popup";
+@import "component/chart";
+@import "component/checkbox";
+@import "component/form";
+@import "component/doublerange";
+@import "component/waiting";
+@import "component/geers";
+@import "component/history";
+@import "component/loader";
+@import "component/dots";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: #524949;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+html {
+  box-sizing: border-box;
+  // font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  user-select: none;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+.hero {
+  &__content {
+    position: absolute;
+    top: 21%;
+    left: 6%;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // https://khabeer-webapp.herokuapp.com
+  &__img {
+    background: url("http://127.0.0.1:8000/imgs/hero.png") no-repeat;
+    background-size: cover;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  &__header {
+    font-size: 10rem;
+    color: white;
+  }
+  &__text {
+    color: white;
+    font-size: 3rem;
+  }
+
+  &__icon {
+    fill: white !important;
+  }
+}
+
+.form {
+  // display: flex;
+  // flex-direction: column;
+  // width: 90rem;
+  // height: 100% !important;
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+    fill: white;
+  }
+
+  &__btns {
+    display: flex;
+    align-self: center;
+    margin-bottom: 0rem;
+    transform: translatey(-4rem);
+    gap: 20px;
+    z-index: 5;
+
+    transform: translateY(-15px);
+  }
+
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+.container {
+  width: 90rem;
+  height: 50rem;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 7fr;
+}
+
+.submit {
+  background-color: rgb(255, 174, 0);
+
+  &:hover {
+    background-color: rgb(236, 162, 0);
+  }
+}
+
+.swiperTopic-button-next {
+  position: absolute;
+  bottom: 45%;
+  right: 2rem;
+  z-index: 5;
+  fill: chartreuse;
+  cursor: pointer;
+}
+
+.swiperTopic-button-prev {
+  position: absolute;
+  bottom: 45%;
+  left: 2rem;
+  z-index: 5;
+  fill: chartreuse;
+  cursor: pointer;
+}
+
+.swiperTopic-pagination {
+  position: absolute;
+  left: 49% !important;
+  z-index: 5;
+}
+
+.swiper__icon {
+  width: 5rem;
+  height: 5rem;
+}
+
+@import "component/mediaqueries";
+
+.loading {
+  font-size: 4rem;
+  color: #524949;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.disable {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+// #root {
+//   position: relative;
+// }

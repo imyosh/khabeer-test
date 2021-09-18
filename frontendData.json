@@ -1,0 +1,134 @@
+{
+    "Programming": {
+        "category": "Programming",
+        "icon": "./svg/programming.svg#programming",
+        "subcategories": [
+            {
+                "title": "Python",
+                "icon": "./svg/python.svg#python"
+            },
+            {
+                "title": "Java",
+                "icon": "./svg/java.svg#java"
+            }
+        ]
+    },
+    "Marketing": {
+        "category": "Marketing",
+        "icon": "./svg/marketing.svg#marketing",
+        "subcategories": [
+            {
+                "title": "Strategy",
+                "icon": "./svg/strategy.svg#strategy"
+            },
+            {
+                "title": "Management",
+                "icon": "./svg/manegement.svg#manegement"
+            }
+        ]
+    },
+    "other": {
+        "category": "other",
+        "icon": "svg/questionmark.svg#questionmark",
+        "subcategories": []
+    },
+    "Progradmming": {
+        "category": "Programming",
+        "icon": "./svg/programming.svg#programming",
+        "subcategories": [
+            {
+                "title": "Python",
+                "icon": "./svg/python.svg#python"
+            },
+            {
+                "title": "Java",
+                "icon": "./svg/java.svg#java"
+            }
+        ]
+    },
+    "Markdeting": {
+        "category": "Marketing",
+        "icon": "./svg/marketing.svg#marketing",
+        "subcategories": [
+            {
+                "title": "Strategy",
+                "icon": "./svg/strategy.svg#strategy"
+            },
+            {
+                "title": "Management",
+                "icon": "./svg/manegement.svg#manegement"
+            }
+        ]
+    },
+    "otdher": {
+        "category": "other",
+        "icon": "svg/questionmark.svg#questionmark",
+        "subcategories": []
+    },
+    "Programmidng": {
+        "category": "Programming",
+        "icon": "./svg/programming.svg#programming",
+        "subcategories": [
+            {
+                "title": "Python",
+                "icon": "./svg/python.svg#python"
+            },
+            {
+                "title": "Java",
+                "icon": "./svg/java.svg#java"
+            }
+        ]
+    },
+    "Markseting": {
+        "category": "Marketing",
+        "icon": "./svg/marketing.svg#marketing",
+        "subcategories": [
+            {
+                "title": "Strategy",
+                "icon": "./svg/strategy.svg#strategy"
+            },
+            {
+                "title": "Management",
+                "icon": "./svg/manegement.svg#manegement"
+            }
+        ]
+    },
+    "oth3er": {
+        "category": "other",
+        "icon": "svg/questionmark.svg#questionmark",
+        "subcategories": []
+    },
+    "Pr3ogramming": {
+        "category": "Programming",
+        "icon": "./svg/programming.svg#programming",
+        "subcategories": [
+            {
+                "title": "Python",
+                "icon": "./svg/python.svg#python"
+            },
+            {
+                "title": "Java",
+                "icon": "./svg/java.svg#java"
+            }
+        ]
+    },
+    "M3arketing": {
+        "category": "Marketing",
+        "icon": "./svg/marketing.svg#marketing",
+        "subcategories": [
+            {
+                "title": "Strategy",
+                "icon": "./svg/strategy.svg#strategy"
+            },
+            {
+                "title": "Management",
+                "icon": "./svg/manegement.svg#manegement"
+            }
+        ]
+    },
+    "o3her": {
+        "category": "other",
+        "icon": "svg/questionmark.svg#questionmark",
+        "subcategories": []
+    }
+}

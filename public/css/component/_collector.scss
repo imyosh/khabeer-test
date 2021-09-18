@@ -1,0 +1,163 @@
+/*==================== PORTFOLIO ====================*/
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: -2.5rem;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--first-color);
+}
+
+.swiper-button-prev,
+.swiper-button-next,
+.swiper-pagination-bullet {
+  outline: none;
+}
+
+.collect {
+  &__slide {
+    display: grid;
+    // grid-gap: 1rem;
+    grid-template-rows: 1fr 7fr;
+
+    width: 100%;
+  }
+  &__data {
+    height: 100%;
+    display: grid;
+    overflow: auto;
+    // grid-template-rows: 1fr 8fr;
+
+    &--range {
+      grid-template-rows: 1fr 1fr;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &__title {
+    font-size: 3rem;
+    color: #333333;
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  &__cardsContainer {
+    overflow: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    width: 80%;
+    min-width: 22rem;
+    max-width: 67rem;
+    height: 96%;
+  }
+
+  &__ContentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    margin: 0 auto;
+    width: 72%;
+  }
+
+  &__card {
+    height: 18rem;
+    width: 15rem;
+    margin-top: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+
+    &__radio {
+      margin-bottom: 1rem;
+    }
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05) translate3d(0, 0, 0) perspective(1px);
+    }
+
+    &__selected {
+      border: none;
+      border-radius: 2pt;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 0 1pt $color-theme !important;
+      // box-shadow: 6px 6px 7px white, -6px 6px 7px white, 0px 20px 19px cyan !important;
+      outline: none;
+      // margin: 1rem;
+      animation: tilt 0.3s ease-out forwards;
+    }
+
+    &__icon {
+      width: 11rem;
+      height: 11rem;
+      // margin-top: 1rem;
+      // margin-bottom: 1rem;
+    }
+
+    &__title {
+      color: #515151;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+input[type="radio"]:checked {
+  /* Or `#a1:checked+label` if you only want it for that input */
+  background-color: red;
+}
+
+@keyframes tilt {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+  }
+  50% {
+    transform: scale(1.07);
+  }
+  100% {
+    transform: scale(1.05) rotate(0deg);
+  }
+}
+
+input[type="radio"]:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: $color-theme;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+  cursor: pointer;
+}

@@ -1,0 +1,398 @@
+/*==================== MEDIA QUERIES ====================*/
+@media screen and (max-width: 1000px) {
+  .hero__content {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+/* For medium devices */
+@media screen and (max-width: 970px) {
+  //p2
+  .waitingtwo__head {
+    font-size: 2.8rem;
+  }
+
+  .waitingtwo__img {
+    width: 35rem;
+  }
+
+  .waitingtwo__text {
+    font-size: 2.8rem;
+  }
+
+  .waitingtwo__text--second {
+    color: #6ac042;
+    font-size: 2.7rem;
+  }
+
+  .btn__form {
+    // font-size: 1.9rem !important;
+    width: 15rem !important;
+    height: 4rem !important;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .hero__header {
+    font-size: 8rem;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    width: 18rem;
+    height: 5rem;
+    font-size: 3rem;
+  }
+
+  .btn svg {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  // p3
+  .btn__form {
+    font-size: 1.9rem !important;
+    width: 15rem !important;
+    height: 4rem !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  // p1
+  .waiting__img {
+    width: 16rem;
+  }
+
+  .geers {
+    transform: scale(0.5);
+    width: 23rem;
+    margin-left: 6rem;
+  }
+
+  .waiting__text {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .dot-flashing,
+  .dot-flashing::after,
+  .dot-flashing::before {
+    width: 11px;
+    height: 11px;
+  }
+
+  // p2
+  .waitingtwo__head {
+    font-size: 2.5rem;
+  }
+
+  .waitingtwo__img {
+    width: 30rem;
+  }
+
+  .waitingtwo__text {
+    font-size: 2.5rem;
+  }
+
+  .waitingtwo__text--second {
+    font-size: 3rem;
+    margin-bottom: -3rem;
+  }
+
+  // p3
+
+  .card-form {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .collect__card {
+    transform: scale(0.75) !important;
+    // width: 10.5rem;
+    // height: 12.6rem;
+
+    &:hover {
+      transform: scale(0.7875) translate3d(0, 0, 0) perspective(1px) !important;
+    }
+
+    .collect__card__selected {
+      animation: tilt 0.3s ease-out forwards !important;
+    }
+  }
+
+  @keyframes tilt {
+    0% {
+      transform: scale(0.75) rotate(0deg);
+    }
+    25% {
+    }
+    50% {
+      transform: scale(0.8025);
+    }
+    100% {
+      transform: scale(0.7875) rotate(0deg);
+    }
+  }
+
+  // ::-webkit-scrollbar {
+  //   width: 8px;
+  // }
+  // .collect__card__icon {
+  //   width: 7.7rem;
+  //   height: 7.7rem;
+  // }
+
+  // .collect__card__title {
+  //   transform: scale(0.7);
+  // }
+
+  // .collect__card__radio {
+  //   transform: scale(0.7);
+  // }
+}
+
+@media screen and (max-width: 700px) {
+  .waitingtwo__content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .waitingtwo__text--second {
+    flex-direction: row;
+  }
+
+  .waitingtwo__text {
+    font-size: 2.3rem;
+  }
+
+  .waitingtwo__head {
+    font-size: 2.3rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hero__header {
+    font-size: 7rem;
+  }
+
+  .hero__text {
+    font-size: 2rem;
+  }
+
+  .waiting__chart__btns {
+    transform: translate(-50%, 0) scale(0.8);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .hero__header {
+    font-size: 5rem;
+  }
+
+  .collect__title {
+    font-size: 2.5rem;
+  }
+
+  .collect__text {
+    font-size: 1.5rem;
+  }
+
+  .waiting__img {
+    display: none;
+  }
+
+  .geers {
+    margin-left: 1rem;
+  }
+
+  .waiting__text {
+    font-size: 2rem;
+    margin: 1rem 0;
+    order: 1;
+  }
+
+  .dot-flashing,
+  .dot-flashing::after,
+  .dot-flashing::before {
+    width: 8px;
+    height: 8px;
+    order: 2;
+  }
+
+  .waiting__content {
+    flex-direction: column;
+  }
+
+  .card-form {
+    transform: scale(1);
+    width: 100%;
+    height: 100%;
+  }
+
+  .check-container {
+    // margin-bottom: 1rem;
+    padding-left: 0rem;
+
+    font-size: 1.5rem;
+    text-align: center;
+
+    margin-right: 8.7rem;
+  }
+
+  .checkmark {
+    right: 9%;
+  }
+
+  .card-form .form-title {
+    font-size: 3rem;
+  }
+
+  .card-form .form-body .row input[type="text"],
+  .card-form .form-body .row input[type="email"],
+  .card-form .form-body .row input[type="tel"] {
+    font-size: 1.5rem;
+  }
+
+  .card-form .form-body .row {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  #first {
+    order: 1;
+  }
+
+  .card-form .rule {
+    margin: 8rem 35px 0 35px;
+  }
+
+  .card-form .form-footer {
+    justify-content: center;
+  }
+
+  .btn__form {
+    transform: scale(0.9);
+  }
+
+  //////////
+
+  .waiting__chart__btns {
+    transform: translate(-50%, 0) scale(0.7);
+  }
+
+  ///////////
+
+  .history__card {
+    font-size: 1.45rem;
+  }
+
+  .history__card__date {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .waiting__chart__btns {
+    transform: translate(-50%, 0) scale(0.6);
+  }
+}
+
+/* For small devices */
+@media screen and (max-width: 400px) {
+  .hero__header {
+    font-size: 4rem;
+  }
+  .hero__text {
+    font-size: 1.5rem;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    width: 10rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+
+  .btn svg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .collect__title {
+    font-size: 2rem;
+  }
+
+  .collect__text {
+    font-size: 1.2rem;
+  }
+
+  .popup__content {
+    width: 100%;
+  }
+
+  .waitingtwo__img {
+    width: 25rem;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .waiting__text {
+    font-size: 1.5rem;
+  }
+
+  .waitingtwo__text {
+    font-size: 2.1rem;
+  }
+
+  .waitingtwo__head {
+    font-size: 2.1rem;
+  }
+
+  .checkmark {
+    width: 2rem;
+    height: 2rem;
+
+    right: 15%;
+  }
+
+  .check-container {
+    font-size: 1.3rem;
+  }
+  // .dot-flashing,
+  // .dot-flashing::after,
+  // .dot-flashing::before {
+  //   width: 5px;
+  //   height: 5px;
+  .history__card {
+    font-size: 1.4rem;
+  }
+
+  .history__card__date {
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .waiting__chart__btns {
+    flex-direction: column;
+    gap: 1rem;
+
+    transform: translate(-50%, -35%) scale(0.6);
+  }
+
+  .history__card {
+    font-size: 1.15rem;
+  }
+
+  .history__card__date {
+    font-size: 1rem;
+  }
+}

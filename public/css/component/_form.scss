@@ -1,0 +1,435 @@
+.form {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #818181;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1rem;
+
+  max-width: 90rem;
+  max-height: 56rem;
+  width: 80vw;
+  height: 80vh;
+
+  // transition: all 4s;
+
+  &__infoForm {
+    border: 1px solid greenyellow;
+    padding: 3rem;
+    border-radius: 2rem;
+    text-align: center;
+
+    width: 50rem;
+    height: 50rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__inputGroup {
+      display: flex;
+      justify-content: space-around;
+
+      &--icon {
+        width: 4rem;
+        height: 4rem;
+        margin-top: 1rem;
+        fill: #3a3a3a;
+        stroke: #3a3a3a;
+      }
+    }
+
+    &--head {
+      text-align: center;
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-left: 1rem;
+      color: #3a3a3a;
+    }
+  }
+
+  &__input {
+    // font-size: 2.5rem;
+    // font-family: inherit;
+    // color: #f1f1f1;
+    // padding: 1rem 2rem;
+    // border-radius: 9px;
+    // background-color: #3c4346;
+    // border: none;
+    // border-bottom: 3px solid transparent;
+
+    // display: block;
+    // // transition: all 0.3s;
+    // margin-bottom: 2rem;
+    // &:hover ~ &__buttons {
+    //   opacity: 1;
+    // }
+
+    // text-align: right;
+
+    appearance: none;
+    margin: 0 15px;
+    height: 6rem;
+    width: 80%;
+    min-width: 21rem;
+    max-width: 35rem;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #e8ebed;
+    color: #576366;
+    font-size: 2rem;
+
+    text-align: left !important;
+
+    &__checkbox {
+      padding: 0;
+      height: initial;
+      width: initial;
+      margin-bottom: 0;
+      display: none;
+      cursor: pointer;
+    }
+
+    &__buttons {
+      position: absolute;
+      opacity: 0;
+      right: 0;
+      top: 24px;
+      width: 5rem;
+
+      background: rgba($color: #000000, $alpha: 0.4);
+      transition: all 0.5s;
+      &:hover {
+        opacity: 1;
+      }
+
+      &--plus {
+        text-align: center;
+        height: 2rem;
+        width: 2rem;
+        width: 100%;
+        border-bottom: 1px solid rgba($color: #ffffff, $alpha: 0.1);
+
+        &:hover {
+          background: rgba($color: #000000, $alpha: 0.1);
+        }
+      }
+
+      &--minus {
+        text-align: center;
+
+        height: 2rem;
+        width: 2rem;
+        width: 100%;
+
+        &:hover {
+          background: rgba($color: #000000, $alpha: 0.1);
+        }
+      }
+
+      &--icon {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary-light;
+
+      // background-color: #3c4346 !important;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #c2c2c2;
+      text-align: left;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 7px;
+
+    &--moneyOperation {
+      margin-top: 2rem;
+    }
+  }
+
+  &__title {
+    margin-bottom: -10px;
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+    margin: 5px;
+  }
+
+  &__input:placeholder-shown ~ &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4rem);
+  }
+
+  &__radios {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__radio-group {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem;
+  }
+
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.4rem;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+// /* Change the white to any color */
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//   -webkit-box-shadow: 0 0 0 40px #3c4346 inset !important;
+// }
+
+// /*Change text in autofill textbox*/
+// input:-webkit-autofill {
+//   -webkit-text-fill-color: #f1f1f1 !important;
+// }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 45px #e8ebed inset !important;
+  -webkit-text-fill-color: #576366 !important;
+}
+
+.check-container {
+  color: #576366;
+  display: block;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 2rem;
+  user-select: none;
+  cursor: pointer;
+  font-size: 2rem;
+  width: 36rem;
+  transform: translateX(34px);
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #bec1c4;
+  border-radius: 0.5rem;
+  transition: background 0.3s;
+
+  // input:checked ~ & {
+  //   background: linear-gradient(180deg, #ffdd2d 0%, #ffab2d 100%);
+  //   border: 0;
+  // }
+
+  input:checked ~ &::after {
+    display: block;
+  }
+
+  &::after {
+    content: "";
+    width: 0.8rem;
+    height: 1.8rem;
+    border: solid $color-theme;
+    border-width: 0 3px 3px 0;
+    border-radius: 0.3rem;
+    transform: rotate(45deg);
+    display: none;
+
+    position: absolute;
+    left: 0.8rem;
+    top: 0rem;
+  }
+}
+
+/* hide default checkbox */
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  margin: -1px;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder {
+  text-align: right;
+}
+/* mozilla solution */
+input:-moz-placeholder {
+  text-align: right;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+
+// body{
+//   display: flex;
+//   height: 100vh;
+//   justify-content: center;
+//   align-items: center;
+//   background: #c0392b;
+//   font-family: Raleway;
+//   color: white;
+//   letter-spacing: 1px;
+// }
+
+.card-form {
+  width: 500px;
+  height: 440px;
+  border-radius: 10px;
+  background: white;
+  // box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 15px 1px rgba(0, 0, 0, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+
+  .form-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    font-size: 4rem;
+    color: white;
+    font-weight: bold;
+    background: $color-theme;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .form-body {
+    padding: 10px;
+    height: 280px;
+
+    .row {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"] {
+        appearance: none;
+        width: 100%;
+        margin: 0 15px;
+        height: 55px;
+        padding: 5px 15px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: #e8ebed;
+        color: #576366;
+        font-size: 2rem;
+
+        text-align: right;
+      }
+    }
+  }
+
+  .rule {
+    height: 2px;
+    background: #e8ebed;
+    margin: 7px 35px;
+  }
+
+  .form-footer {
+    margin: 0 25px 0px 25px;
+    padding: 10px 10px;
+
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 15px;
+      background: #27ae60;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    span {
+      margin-left: 8px;
+    }
+  }
+}
