@@ -317,6 +317,7 @@ input[type="radio"]:checked:after {
 
 .tooltip .tooltiptext {
   cursor: initial;
+  font-family: sans-serif;
   width: 50px;
   word-wrap: break-word;
   background: #e1e4e9;
