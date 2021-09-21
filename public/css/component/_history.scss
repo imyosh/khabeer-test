@@ -10,11 +10,27 @@
     height: 100%;
     // flex-direction: column;
     padding: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  &__head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.6rem;
+    color: #555555;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: -2.5rem;
+
+    transition: all 0.3s;
   }
 
   &__card {
     height: 12rem;
     width: 100%;
+    cursor: pointer;
     margin-top: 1rem;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -37,6 +53,15 @@
     &__date {
       color: #c2c2c2;
       font-size: 1.6rem;
+
+      &__view {
+        color: #c2c2c2;
+        font-size: 1.6rem;
+
+        position: absolute;
+        top: 1rem;
+        left: 2rem;
+      }
     }
 
     &:hover {

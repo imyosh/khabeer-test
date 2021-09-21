@@ -4,13 +4,203 @@ import Chart from "./Chart"
 import axios from "axios"
 
 let server = "https://khabeer-webapp.herokuapp.com"
-// "http://127.0.0.1:8000"
+// let server = "http://127.0.0.1:8000"
 
-/*==================== FORM SWIPER  ====================*/
+const chartOptions1 = {
+  chart: {
+    id: "chart1",
+    type: "area",
+    foreColor: "#999",
+    stacked: false,
+    dropShadow: {
+      enabled: true,
+      enabledSeries: [0],
+      top: -2,
+      left: 2,
+      blur: 5,
+      opacity: 0.06,
+    },
+  },
+  colors: ["#E04E4E", "#053A4A", "#28234A", "#3A8C84", "#2C7BCF"],
+  stroke: {
+    curve: "smooth",
+    width: 3,
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  series: [],
+  //   noData: {
+  //     text: "Loading...",
+  //   },
+  markers: {
+    size: 0,
+    strokeColor: "#fff",
+    strokeWidth: 3,
+    strokeOpacity: 1,
+    fillOpacity: 1,
+    hover: {
+      size: 6,
+    },
+  },
+  xaxis: {
+    type: "category",
+
+    // labels: {
+    //   show: true,
+    // },
+
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    labels: {
+      offsetX: 14,
+      offsetY: -5,
+    },
+    tooltip: {
+      enabled: true,
+    },
+  },
+  grid: {
+    padding: {
+      left: 7,
+      right: 5,
+    },
+  },
+  tooltip: {
+    x: {
+      format: "dd MMM yyyy",
+    },
+    y: {
+      formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+        if (value)
+          return ` 
+        ج. مصري  ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+      },
+    },
+  },
+  legend:
+    window.screen.width <= 580
+      ? {
+          position: "bottom",
+          horizontalAlign: "center",
+        }
+      : {
+          position: "top",
+          horizontalAlign: "left",
+        },
+  fill: {
+    type: "solid",
+    // fillOpacity: 0.5,
+    opacity: 0.6,
+  },
+}
+
+const chartOptions2 = {
+  chart: {
+    id: "chart2",
+    type: "area",
+    foreColor: "#999",
+    stacked: false,
+    dropShadow: {
+      enabled: true,
+      enabledSeries: [0],
+      top: -2,
+      left: 2,
+      blur: 5,
+      opacity: 0.06,
+    },
+  },
+  colors: ["#E04E4E", "#053A4A", "#28234A", "#3A8C84", "#2C7BCF"],
+  stroke: {
+    curve: "smooth",
+    width: 3,
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  series: [],
+  //   noData: {
+  //     text: "Loading...",
+  //   },
+  markers: {
+    size: 0,
+    strokeColor: "#fff",
+    strokeWidth: 3,
+    strokeOpacity: 1,
+    fillOpacity: 1,
+    hover: {
+      size: 6,
+    },
+  },
+  xaxis: {
+    type: "category",
+
+    // labels: {
+    //   show: true,
+    // },
+
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    labels: {
+      offsetX: 14,
+      offsetY: -5,
+    },
+    tooltip: {
+      enabled: true,
+    },
+  },
+  grid: {
+    padding: {
+      left: 7,
+      right: 5,
+    },
+  },
+  tooltip: {
+    x: {
+      format: "dd MMM yyyy",
+    },
+    y: {
+      formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+        if (value)
+          return ` 
+        ج. مصري  ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+      },
+    },
+  },
+  legend:
+    window.screen.width <= 580
+      ? {
+          position: "bottom",
+          horizontalAlign: "center",
+        }
+      : {
+          position: "top",
+          horizontalAlign: "left",
+        },
+  fill: {
+    type: "solid",
+    // fillOpacity: 0.5,
+    opacity: 0.6,
+  },
+}
 
 function PopupForm() {
   const [rangeMin, setRangeMin] = useState("100")
   const [rangeMax, setRangeMax] = useState("500")
+
+  const [userData, setUserData] = useState({})
 
   const [calculations, setCalculations] = useState([])
 
@@ -20,8 +210,13 @@ function PopupForm() {
   const [frontendData, setFrontendData] = useState({ Programming: { icon: "", subcategories: [] } })
   const [chartData, setChartData] = useState({})
 
+  const [historyChartData, setHistoryChartData] = useState({ calculatedData: {} })
+
   const [selectedCategory, setselectedCategory] = useState("Programming")
-  const [selectedTopic, setselectedTopic] = useState("")
+  const [selectedTopic, setselectedTopic] = useState("Programming Fundamentals")
+  const [selectedPrice, setselectedPrice] = useState(0)
+
+  const [otherSelectedCategory, setOtherSelectedCategory] = useState("")
 
   const handleMin = (event) => {
     setRangeMin(event.target.value)
@@ -66,10 +261,15 @@ window.setupTopicSwiper = () => {
       type: "bullets",
     },
   })
+
 }
+
+
+
 window.setupCollectorSwiper = () => {
   let swiperCollector = new Swiper(".swiper__container", {
     cssMode: true,
+    noSwiping: true,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -81,6 +281,14 @@ window.setupCollectorSwiper = () => {
       type: "progressbar",
     },
   })
+
+  window.swip = swiperCollector
+  window.backFirstSlide = () => {
+    swiperCollector.allowSlidePrev = true
+    swiperCollector.slideTo(0)
+    swiperCollector.allowSlidePrev = false
+  }
+
   swiperCollector.allowSlideNext = false
   swiperCollector.allowSlidePrev = false
 
@@ -123,6 +331,8 @@ window.setupCollectorSwiper = () => {
     }
   }
 }
+
+
 
 window.setUpDoubleRangeSlider = () => {
   var inputLeft = document.getElementById("input-left");
@@ -189,10 +399,6 @@ window.setUpDoubleRangeSlider = () => {
     thumbRight.classList.remove("active");
   });
 }
-
-
-
-
     `
     script.async = true
 
@@ -257,6 +463,7 @@ window.setUpDoubleRangeSlider = () => {
       const formData = new FormData(e.target)
       const formProps = Object.fromEntries(formData)
       // console.log(formProps)
+
       setselectedTopic(formProps.topicTitle)
 
       let form = document.getElementById("swiper")
@@ -280,7 +487,41 @@ window.setUpDoubleRangeSlider = () => {
 
           setTimeout(() => {
             p2.classList.remove("nextPage")
-            p3.classList.add("nextPage")
+
+            if (document.getElementById("email").value === "") {
+              p3.classList.add("nextPage")
+            } else {
+              if (navigator.onLine) {
+                let datapoint = {
+                  date: new Date().toLocaleString(),
+                  category: selectedCategory,
+                  topicTitle: selectedTopic,
+                  coursePrice: selectedPrice,
+                  calculatedData: chartData,
+                  students: Math.ceil((Number(rangeMin) + Number(rangeMax)) / 2),
+                }
+
+                // console.log(datapoint)
+                formProps.calculations = [datapoint]
+
+                let p4 = document.getElementById("waitingfour")
+                let p3 = document.getElementById("waitingthree")
+
+                p3.classList.remove("nextPage")
+                p4.classList.add("nextPage")
+
+                axios.post(`${server}/usersdata`, userData).then((res) => {
+                  // console.log(res)
+
+                  if (res.data.exist) {
+                    document.getElementById("history").classList.remove("disable")
+                    setCalculations([...res.data.calculations, datapoint])
+                  }
+                })
+              } else {
+                alert("pleas check your internt connection")
+              }
+            }
           }, 4000)
         }, 2000)
       })
@@ -297,11 +538,15 @@ window.setUpDoubleRangeSlider = () => {
       const formProps = Object.fromEntries(formData)
       // console.log(formProps)
 
+      setUserData(formProps)
+
       let datapoint = {
         date: new Date().toLocaleString(),
-        category: selectedCategory,
+        category: otherSelectedCategory === "" ? selectedCategory : otherSelectedCategory,
         topicTitle: selectedTopic,
+        coursePrice: selectedPrice,
         calculatedData: chartData,
+        students: Math.ceil((Number(rangeMin) + Number(rangeMax)) / 2),
       }
       formProps.calculations = [datapoint]
 
@@ -329,9 +574,61 @@ window.setUpDoubleRangeSlider = () => {
     document.getElementById("waitingfive").classList.add("nextPage")
   }
 
+  const toHistoryFromChart = () => {
+    document.getElementById("waitingsix").classList.remove("nextPage")
+    document.getElementById("waitingfive").classList.add("nextPage")
+    window.ApexCharts.exec("chart2", "resetSeries")
+  }
+
   const toChart = () => {
-    document.getElementById("waitingfour").classList.add("nextPage")
     document.getElementById("waitingfive").classList.remove("nextPage")
+    document.getElementById("waitingfour").classList.add("nextPage")
+  }
+
+  const toHistoryChart = () => {
+    document.getElementById("waitingfive").classList.remove("nextPage")
+    document.getElementById("waitingsix").classList.add("nextPage")
+  }
+
+  const again = () => {
+    document.getElementById("waitingfour").classList.remove("nextPage")
+    let form = document.getElementById("swiper")
+    form.style.display = "flex"
+    form.style.opacity = "1"
+    window.backFirstSlide()
+
+    document.getElementById("submit").style.display = "none"
+    document.getElementsByClassName("swiper-button-next")[0].style.display = "flex"
+
+    document.getElementsByClassName("swiper-button-next")[0].classList.add("disable")
+
+    document.getElementById("priceInput").value = ""
+
+    setRangeMin(100)
+    document.getElementById("input-left").value = "100"
+    setRangeMax(500)
+    document.getElementById("input-right").value = "500"
+
+    window.setUpDoubleRangeSlider()
+
+    let labels = document
+      .getElementById("parentLableContainerCategory")
+      .getElementsByTagName("label")
+
+    ;[...labels].forEach((label) => {
+      label.firstChild.classList.remove("collect__card__selected")
+      label.getElementsByTagName("input")[0].checked = false
+    })
+
+    if (document.getElementById("parentLableContainer")) {
+      labels = document.getElementById("parentLableContainer").getElementsByTagName("label")
+      ;[...labels].forEach((label) => {
+        label.firstChild.classList.remove("collect__card__selected")
+        label.getElementsByTagName("input")[0].checked = false
+      })
+    }
+
+    window.ApexCharts.exec("chart1", "resetSeries")
   }
 
   return (
@@ -342,7 +639,14 @@ window.setUpDoubleRangeSlider = () => {
         }}
         className="popup__content"
       >
-        <form onSubmit={formSubmit} id="swiper" className="form swiper__container swiper-container">
+        <form
+          onSubmit={formSubmit}
+          id="swiper"
+          className="form swiper__container swiper-container"
+          onKeyPress={(e) => {
+            e.key === "Enter" && e.preventDefault()
+          }}
+        >
           <div className="swiper-wrapper">
             <div className="collect__slide swiper-slide">
               {frontendData["Programming"]["subcategories"].length === 0 ? (
@@ -355,9 +659,9 @@ window.setUpDoubleRangeSlider = () => {
                 </div>
               ) : (
                 <>
-                  <h3 className="collect__title">choose a category</h3>
+                  <h3 className="collect__title">قم بأختيار فئة</h3>
                   <div className="collect__data">
-                    <div className="collect__cardsContainer">
+                    <div id="parentLableContainerCategory" className="collect__cardsContainer">
                       {Object.keys(frontendData).map((title, id) => (
                         <label key={id} htmlFor={title}>
                           <div
@@ -390,25 +694,36 @@ window.setUpDoubleRangeSlider = () => {
               )}
             </div>
 
-            {selectedCategory === "Other" ? (
+            {selectedCategory === "فئة أخرى" ? (
               <div className="collect__slide swiper-slide">
-                <h3 className="collect__title">Set a topic name</h3>
+                <h3 className="collect__title">قم بادخال مجالك الخاص</h3>
                 <div className="collect__data">
                   <div className="collect__ContentContainer">
                     <input
                       className="form__input"
                       type="text"
-                      name="topicTitle"
-                      placeholder="Topic name"
+                      name="category"
+                      placeholder="فئة المجال"
                       required
+                      onChange={(e) => setOtherSelectedCategory(e.target.value)}
                     ></input>
-                    <span>We will remember this name</span>
+
+                    <input
+                      className="form__input"
+                      type="text"
+                      name="topicTitle"
+                      placeholder="اسم المجال"
+                      required
+                      onChange={(e) => setselectedTopic(e.target.value)}
+                    ></input>
+
+                    <span className="collect__text">سوف نقوم بحفظ مجالك الخاص</span>
                   </div>
                 </div>
               </div>
             ) : window.screen.width <= 703 || window.screen.height <= 644 ? (
               <div className="collect__slide swiper-slide">
-                <h3 className="collect__title">Choose the topic</h3>
+                <h3 className="collect__title">قم بأختيار مجالك</h3>
 
                 <div className="collect__data">
                   <div id="parentLableContainer" className="collect__cardsContainer">
@@ -443,7 +758,7 @@ window.setUpDoubleRangeSlider = () => {
               </div>
             ) : (
               <div className="collect__slide swiper-slide">
-                <h3 className="collect__title">Choose the topic</h3>
+                <h3 className="collect__title">قم بأختيار مجالك</h3>
 
                 <div className="swiperTopicss">
                   <div id="parentLableContainer" className="swiper-wrapper">
@@ -509,26 +824,48 @@ window.setUpDoubleRangeSlider = () => {
               </div>
             )}
 
+            {selectedTopic === "مجال آخر" ? (
+              <div className="collect__slide swiper-slide">
+                <h3 className="collect__title">قم بادخال مجالك الخاص</h3>
+                <div className="collect__data">
+                  <div className="collect__ContentContainer">
+                    <input
+                      className="form__input"
+                      type="text"
+                      name="topicTitle"
+                      placeholder="اسم المجال"
+                      required
+                      onChange={(e) => setselectedTopic(e.target.value)}
+                    ></input>
+
+                    <span>سوف نقوم بحفظ مجالك الخاص</span>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
             <div className="collect__slide swiper-slide">
-              <h3 className="collect__title">what is the price of your course ?</h3>
+              <h3 className="collect__title">كم هو سعر الكورس الذي ستقدمه ؟</h3>
               <div className="collect__data">
                 <div className="collect__ContentContainer">
                   <input
                     className="form__input"
+                    id="priceInput"
                     type="number"
                     name="coursePrice"
-                    placeholder="Price"
+                    placeholder="السعر"
+                    onChange={(e) => setselectedPrice(e.target.value)}
                     required
                   ></input>
-                  <span>the price is in EGP</span>
+                  <span className="collect__text">
+                    إذا لم تحدد سعر الكورس إلى الآن يمكنك اختيار رقم بين 200 و 1500 ج
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="collect__slide swiper-slide">
-              <h3 className="collect__title">
-                How many students you expect to enroll for the course ?
-              </h3>
+              <h3 className="collect__title">كم طالب تتوقع ان يشترك معك شهريا ؟</h3>
               <div className="collect__data">
                 <div className="collect__ContentContainer">
                   <div className="multi-range-slider">
@@ -537,7 +874,7 @@ window.setUpDoubleRangeSlider = () => {
                       name="minStudent"
                       type="range"
                       id="input-left"
-                      min="0"
+                      min="10"
                       max="1000"
                       value={rangeMin}
                       onInput={handleMin}
@@ -546,7 +883,7 @@ window.setUpDoubleRangeSlider = () => {
                       name="maxStudent"
                       type="range"
                       id="input-right"
-                      min="0"
+                      min="10"
                       max="1000"
                       value={rangeMax}
                       onInput={handleMax}
@@ -585,9 +922,8 @@ window.setUpDoubleRangeSlider = () => {
                   </div>
 
                   <span className="collect__text">
-                    Choose a minimum and maximum of 10 to 1,000 students per month Our system will
-                    project this figure over a full year in increments according to the market
-                    analysis for your chosen industry.
+                    اختر عدد الطلاب ما بين 10 و 1000 طالب شهريًا وسوف يقوم نظامنا بالتنبؤ بأرباحك
+                    لمدة عام قادم وفقًا لبيانات سابقة
                   </span>
                 </div>
               </div>
@@ -599,13 +935,12 @@ window.setUpDoubleRangeSlider = () => {
 
           <div className="form__btns">
             <div className="swiper-button-prev btn__norm btn__norm--gray">Previous step</div>
-            <div className="swiper-button-next btn__norm btn__norm--pink">Next step</div>
+            <div className="swiper-button-next btn__norm btn__norm--p">Next step</div>
             <button id="submit" className="btn__norm btn__norm--submit">
               submit
             </button>
           </div>
         </form>
-
         <div id="waitingone" className="waiting">
           <div className="waiting__head">
             <img src={`${server}/imgs/person.png`} alt="person" className="waiting__img"></img>
@@ -665,7 +1000,6 @@ window.setUpDoubleRangeSlider = () => {
             <span className="waiting__text">جاري تحليل مجالك وأرباحك المتوقعة</span>
           </div>
         </div>
-
         <div id="waitingtwo" className="waiting">
           <span className="waitingtwo__head">
             هل تعرف كم يحقق أرديت سولس فقط من خلال كورسات اونلاين ؟
@@ -693,7 +1027,6 @@ window.setUpDoubleRangeSlider = () => {
             <img src="/person.png" className="waiting__img"></img>
           </div> */}
         </div>
-
         <div id="waitingthree" className="waiting">
           <div className="card-form">
             <form onSubmit={submitInfo} className="signup">
@@ -735,7 +1068,7 @@ window.setUpDoubleRangeSlider = () => {
               </div>
               <div className="rule"></div>
               <div className="form-footer">
-                <button className="btn btn--pink btn--info btn--round btn__form">
+                <button className="btn btn--p btn--info btn--round btn__form">
                   <svg
                     className="hero__icon "
                     xmlns="http://www.w3.org/2000/svg"
@@ -750,41 +1083,142 @@ window.setUpDoubleRangeSlider = () => {
             </form>
           </div>
         </div>
-
         <div id="waitingfour" className="waiting waiting__chart">
-          {Object.keys(chartData).length !== 0 ? <Chart chartData={chartData} /> : null}
+          <h3 className="collect__title" style={{ marginTop: "0" }}>
+            أرباحك المتوقعة خلال العام المقبل من مجال
+          </h3>
+          <div className="collect__selected--topic">
+            {selectedTopic}
+
+            <div className="tooltipCahartContainer">
+              <div className="tooltipChart">
+                <svg
+                  width="2rem"
+                  height="2rem"
+                  xmlns="http://www.w3.org/2000/svg"
+                  data-name="Layer 1"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="gold"
+                    d="M17.09,2.82a8,8,0,0,0-6.68-1.66A8,8,0,0,0,4.14,7.48a8.07,8.07,0,0,0,1.72,6.65A4.54,4.54,0,0,1,7,17v3a3,3,0,0,0,3,3h4a3,3,0,0,0,3-3V17.19A5.17,5.17,0,0,1,18.22,14a8,8,0,0,0-1.13-11.2ZM15,20a1,1,0,0,1-1,1H10a1,1,0,0,1-1-1V19h6Zm1.67-7.24A7.13,7.13,0,0,0,15,17H13V14a1,1,0,0,0-2,0v3H9a6.5,6.5,0,0,0-1.6-4.16,6,6,0,0,1,3.39-9.72A6,6,0,0,1,18,9,5.89,5.89,0,0,1,16.67,12.76Z"
+                  />
+                </svg>
+                <span className="tooltipCharttext">
+                  اختر المنصات التي تحب أن يكون الكورس الخاص بك عليها
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {Object.keys(chartData).length !== 0 ? (
+            <Chart id="chart1" chartData={chartData} options={chartOptions1} />
+          ) : null}
+          {/* <Chart chartData={chartData} /> */}
+
+          <div className="btn__norm btn__norm--p btn__norm--chart-r" onClick={again}>
+            كورس آخر
+          </div>
 
           <div className="waiting__chart__btns">
             <a
               target="_blank"
               rel="noreferrer"
-              className="btn__norm btn__norm--pink btn__norm--chart"
+              className="btn__norm btn__norm--p btn__norm--chart"
               href="https://khabeer.online/Webinar"
             >
-              علمني كيف أحول هذه الأرقام إلى حقيقة
+              حول هذه الأرقام إلى حقيقة
             </a>
 
-            <div
-              id="history"
-              onClick={toHistory}
-              className="btn__norm btn__norm--pink btn__norm--chart disable"
-            >
-              تاريخ الحسابات
+            <div style={{ width: "23rem", display: "flex", gap: "1rem" }}>
+              <div
+                id="history"
+                onClick={toHistory}
+                className="btn__norm btn__norm--p btn__norm--chart disable"
+              >
+                تاريخ الحسابات
+              </div>
+
+              <div
+                id="bottom-btn-chart"
+                className="btn__norm btn__norm--p btn__norm--chart"
+                onClick={again}
+              >
+                كورس آخر
+              </div>
             </div>
           </div>
         </div>
 
         <div id="waitingfive" className="waiting">
           <div className="history__cardsContainer">
-            {calculations.map(({ date, category, topicTitle }, id) => (
-              <div key={id} className="history__card">
-                <span className="history__card__date">{date}</span>
-                <span>Category : {category} </span>
-                <span>Topic : {topicTitle}</span>
-              </div>
-            ))}
+            {calculations.map(
+              ({ date, category, topicTitle, calculatedData, coursePrice, students }, id) => (
+                <div
+                  key={id}
+                  onClick={() => {
+                    setHistoryChartData({
+                      date,
+                      category,
+                      topicTitle,
+                      calculatedData,
+                      coursePrice,
+                      students,
+                    })
+
+                    // console.log("calculatedData", calculatedData)
+                    // console.log(s"chartData", chartData)
+
+                    toHistoryChart()
+                  }}
+                  className="history__card"
+                >
+                  <span className="history__card__date">{date}</span>
+                  <span>Category : {category} </span>
+                  <span>Topic : {topicTitle}</span>
+                </div>
+              )
+            )}
           </div>
-          <div style={{ fontSize: "2rem" }} onClick={toChart} className="btn__norm btn__norm--pink">
+          <div onClick={toChart} className="btn__norm btn__norm--p btn__back">
+            عودة
+          </div>
+        </div>
+        <div id="waitingsix" className="waiting">
+          <span className="history__card__date__view">{historyChartData.date}</span>
+
+          <div className="history__head">
+            <table className="table table__left table--a1">
+              <tbody>
+                <tr>
+                  <td>Category</td>
+                  <td>{historyChartData.category} </td>
+                </tr>
+                <tr>
+                  <td>Topic</td>
+                  <td> {historyChartData.topicTitle}</td>
+                </tr>
+              </tbody>
+            </table>
+            <table className="table table__right table--a1">
+              <tbody>
+                <tr>
+                  <td>Price</td>
+                  <td>{historyChartData.coursePrice}</td>
+                </tr>
+
+                <tr>
+                  <td>Students</td>
+                  <td>{historyChartData.students}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {Object.keys(historyChartData.calculatedData).length !== 0 ? (
+            <Chart chartData={historyChartData.calculatedData} options={chartOptions2} />
+          ) : null}
+          <div onClick={toHistoryFromChart} className="btn__norm btn__norm--p btn__back">
             عودة
           </div>
         </div>

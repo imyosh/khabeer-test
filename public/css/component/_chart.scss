@@ -14,3 +14,58 @@
   opacity: 1;
   border: 0;
 }
+
+.chart {
+  &__text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+.tooltipChart {
+  //   position: relative;
+  display: inline-block;
+  z-index: 444;
+  // border-bottom: 1px dotted black;
+}
+
+.tooltipChart .tooltipCharttext {
+  visibility: hidden;
+  width: 135px;
+  font-size: 1.5rem !important;
+  word-wrap: break-word;
+  background: #676767;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 18%;
+  margin-left: -60px;
+}
+
+.tooltipChart .tooltipCharttext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #676767 transparent;
+}
+
+.tooltipChart:hover .tooltipCharttext {
+  visibility: visible;
+}
+
+.tooltipCahartContainer {
+  position: absolute;
+  width: min-content;
+  top: 5.9rem;
+  left: 66%;
+  z-index: 399;
+}

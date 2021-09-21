@@ -15,7 +15,7 @@ function App() {
         <h1 className="hero__header">Khabeer Online</h1>
         <span className="hero__text">توقع ارباحك من الكورسات على الانترنت مجاناً</span>
 
-        <button onClick={openForm} className="btn btn--pink btn--round">
+        <button onClick={openForm} className="btn btn--p btn--round">
           <svg
             className="hero__icon "
             xmlns="http://www.w3.org/2000/svg"

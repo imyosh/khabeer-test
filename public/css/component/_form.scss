@@ -9,11 +9,11 @@
   grid-row-gap: 1rem;
 
   max-width: 90rem;
-  max-height: 56rem;
+  max-height: 60rem;
   width: 80vw;
-  height: 88vh;
+  height: 90vh;
 
-  // transition: all 4s;
+  transition: all 0.3s;
 
   &__infoForm {
     border: 1px solid greenyellow;
@@ -82,8 +82,7 @@
     background: #e8ebed;
     color: #576366;
     font-size: 2rem;
-
-    text-align: left !important;
+    text-align: right;
 
     &__checkbox {
       padding: 0;
@@ -151,7 +150,7 @@
 
     &::-webkit-input-placeholder {
       color: #c2c2c2;
-      text-align: left;
+      text-align: right;
     }
   }
 
@@ -274,6 +273,15 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 45px #e8ebed inset !important;
   -webkit-text-fill-color: #576366 !important;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder {
+  text-align: right;
+}
+/* mozilla solution */
+input:-moz-placeholder {
+  text-align: right;
 }
 
 .check-container {

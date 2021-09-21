@@ -1,0 +1,140 @@
+.table {
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  display: table;
+  border-radius: 13px;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #a7a1ae;
+  overflow: hidden;
+
+  margin-right: 1px;
+
+  &__div {
+    padding: 1px !important;
+    display: flex;
+  }
+
+  &__right {
+    margin-left: -3px;
+    border-radius: 0 13px 13px 0;
+
+    tr {
+      background-color: #f3f3f3;
+
+      &:hover:first-of-type {
+        background-color: #e8e8e8;
+      }
+    }
+  }
+
+  &__left {
+    border-radius: 13px 0 0 13px;
+    tr {
+      background-color: #f3f3f3;
+    }
+  }
+
+  &__head-l {
+    border-radius: 13px 0 0 0px;
+  }
+
+  &__head-m {
+    border-radius: 0;
+    margin: 0 -1px;
+
+    tr:hover:first-of-type {
+      background-color: #e8e8e8;
+    }
+  }
+
+  &__head-r {
+    border-radius: 0 13px 0 0;
+
+    tr:hover:first-of-type {
+      background-color: #e8e8e8;
+    }
+  }
+
+  th {
+    height: 4rem;
+    font-weight: normal;
+    font-size: 1em;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-left: 3%;
+    font-size: 13px;
+    position: sticky;
+    top: 0;
+  }
+
+  tr {
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #e8e8e8;
+    }
+  }
+
+  td {
+    font-weight: bold;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-right: 13px;
+    width: 90px;
+    transition: all 0.5s;
+
+    &:first-child {
+      color: #555555;
+    }
+  }
+
+  th {
+    color: #a7a1ae;
+  }
+
+  &--a2 {
+    overflow: visible;
+    height: max-content;
+
+    th {
+      color: #3ab899;
+      background: #111214;
+      z-index: 500;
+    }
+
+    td {
+      position: relative;
+
+      &:hover {
+        background-color: #b1c7bbe1 !important;
+        color: #111;
+      }
+      color: #a7a1ae;
+      padding-bottom: 1.5%;
+      padding-top: 1.5%;
+    }
+
+    tr {
+      transition: all 0.3s;
+      &:hover {
+        background: rgba(#e8e8e8, 0.5) !important;
+
+        div {
+          width: 1.5rem;
+        }
+      }
+    }
+  }
+
+  &--a3 {
+    td {
+      color: #b7b7b7 !important;
+      &:hover:not(:first-of-type) {
+        transform: scale(1.1) translateX(5px) translate3d(0, 0, 0) perspective(1px);
+      }
+    }
+  }
+}

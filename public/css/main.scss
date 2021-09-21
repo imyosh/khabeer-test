@@ -13,6 +13,7 @@
 @import "component/history";
 @import "component/loader";
 @import "component/dots";
+@import "component/table";
 
 *,
 *::before,
@@ -38,6 +39,8 @@ html {
 body {
   font-family: "Josefin Sans", sans-serif;
   user-select: none;
+
+  background-color: #111111;
 }
 
 .app {

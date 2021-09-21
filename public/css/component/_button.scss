@@ -21,6 +21,12 @@
     justify-content: space-evenly;
   }
 
+  &__back {
+    font-size: 2rem !important;
+    position: absolute !important;
+    bottom: 2rem;
+  }
+
   &--round {
     border-radius: 3rem !important;
     &::after {
@@ -102,7 +108,7 @@
     }
   }
 
-  &--pink {
+  &--p {
     margin-top: 2rem;
     align-self: center;
     background-color: $color-theme;
@@ -189,7 +195,7 @@
 .btn__norm {
   text-decoration: none;
   width: 11rem;
-  height: 4rem;
+  height: 3.5rem;
   display: inline-block;
   border-radius: 0.5rem;
 
@@ -204,7 +210,7 @@
   align-items: center;
   justify-content: space-evenly;
 
-  &--pink {
+  &--p {
     background-color: $color-theme;
     color: white;
 
@@ -219,6 +225,13 @@
     font-size: 1.7rem;
     margin: 0 auto;
     width: 23rem;
+  }
+
+  &--chart-r {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
   }
 
   &--submit {
@@ -247,4 +260,10 @@
       background-color: #c2c2c2;
     }
   }
+}
+
+#bottom-btn-chart {
+  display: none;
+  width: 11rem;
+  // height: 4rem;
 }

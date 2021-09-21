@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import ApexCharts from "apexcharts"
+import React from "react"
+import Chart from "react-apexcharts"
 
 // var chartData = {
 //   udemyData: [
@@ -88,129 +88,46 @@ import ApexCharts from "apexcharts"
 //   ],
 // }
 
-var options = {
-  chart: {
-    type: "area",
-    height: "400",
-    width: "100%",
-    foreColor: "#999",
-    stacked: false,
-    dropShadow: {
-      enabled: true,
-      enabledSeries: [0],
-      top: -2,
-      left: 2,
-      blur: 5,
-      opacity: 0.06,
-    },
-  },
-  colors: ["#E04E4E", "#053A4A", "#28234A", "#3A8C84", "#2C7BCF"],
-  stroke: {
-    curve: "smooth",
-    width: 3,
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  series: [],
-  //   noData: {
-  //     text: "Loading...",
-  //   },
-  markers: {
-    size: 0,
-    strokeColor: "#fff",
-    strokeWidth: 3,
-    strokeOpacity: 1,
-    fillOpacity: 1,
-    hover: {
-      size: 6,
-    },
-  },
-  xaxis: {
-    type: "category",
-
-    // labels: {
-    //   show: true,
-    // },
-
-    axisBorder: {
-      show: false,
-    },
-    axisTicks: {
-      show: false,
-    },
-  },
-  yaxis: {
-    labels: {
-      offsetX: 14,
-      offsetY: -5,
-    },
-    tooltip: {
-      enabled: true,
-    },
-  },
-  grid: {
-    padding: {
-      left: -5,
-      right: 5,
-    },
-  },
-  tooltip: {
-    x: {
-      format: "dd MMM yyyy",
-    },
-  },
-  legend: {
-    position: "top",
-    horizontalAlign: "left",
-  },
-  fill: {
-    type: "solid",
-    fillOpacity: 0.7,
-  },
-}
-
-const Chart = ({ chartData }) => {
-  useEffect(() => {
-    var chart = new ApexCharts(document.querySelector("#timeline-chart"), options)
-
-    window.chart = chart
-    chart.render()
-
-    window.updataChartData = chart.updateSeries
-  }, [])
-
-  useEffect(() => {
-    window.chart.updateSeries([
-      {
-        name: "udemy",
-        data: chartData.udemyData,
-      },
-      {
-        name: "hotmart",
-        data: chartData.hotmartData,
-      },
-      {
-        name: "thinkific",
-        data: chartData.thinkificData,
-      },
-      {
-        name: "teachable",
-        data: chartData.teachableData,
-      },
-
-      {
-        name: "voomly",
-        data: chartData.voomlyData,
-      },
-    ])
-  }, [chartData])
-
+const AChart = ({ chartData, options }) => {
   return (
-    <div id="chart">
-      <div id="timeline-chart"></div>
-    </div>
+    <Chart
+      options={options}
+      series={[
+        {
+          name: "udemy",
+          data: chartData.udemyData,
+        },
+        {
+          name: "hotmart",
+          data: chartData.hotmartData,
+        },
+        {
+          name: "thinkific",
+          data: chartData.thinkificData,
+        },
+        {
+          name: "teachable",
+          data: chartData.teachableData,
+        },
+
+        {
+          name: "voomly",
+          data: chartData.voomlyData,
+        },
+      ]}
+      type="area"
+      width="91%"
+      height="400"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "2rem",
+        marginBottom: "2rem",
+        width: "100%",
+      }}
+    />
   )
 }
 
-export default Chart
+export default AChart
