@@ -1022,7 +1022,7 @@ window.setUpDoubleRangeSlider = () => {
               </div>
 
               <br></br>
-              <span className="">! أكثر من مليون ونصف جنيه مصري</span>
+              <span className="jos_font">! أكثر من مليون ونصف جنيه مصري</span>
             </div>
           </div>
 
