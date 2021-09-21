@@ -213,6 +213,9 @@
   .waiting__chart__btns {
     transform: translate(-50%, 0) scale(0.7);
   }
+  .btn__back {
+    transform: scale(0.7);
+  }
 }
 
 @media screen and (max-width: 580px) {
@@ -337,12 +340,6 @@
 @media screen and (max-width: 700px) {
   .popup__content {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 430px) {
-  .waiting__chart__btns {
-    transform: translate(-50%, 0) scale(0.6);
   }
 }
 
