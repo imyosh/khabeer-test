@@ -179,3 +179,9 @@ body {
 // #root {
 //   position: relative;
 // }
+
+@-moz-document url-prefix() {
+  .check-container {
+    padding-left: 0 !important;
+  }
+}

@@ -126,6 +126,8 @@
     font-size: 1.7rem;
     font-weight: bold;
 
+    min-width: max-content;
+
     align-self: flex-end;
     margin: 0;
 
@@ -136,7 +138,7 @@
   }
 
   &--chart {
-    width: 15rem;
+    width: 16rem;
     height: 4rem;
     font-size: 1.7rem;
     font-weight: bold;
@@ -225,7 +227,7 @@
     transform: translateY(-12px);
     font-size: 1.7rem;
     margin: 0 auto;
-    width: 23rem;
+    width: 24rem;
   }
 
   &--chart-r {
@@ -266,5 +268,6 @@
 #bottom-btn-chart {
   display: none;
   width: 11rem;
+  min-width: max-content;
   // height: 4rem;
 }

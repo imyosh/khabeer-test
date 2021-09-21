@@ -485,6 +485,9 @@ input[type="radio"]:checked:after {
   height: 4rem;
   font-size: 1.7rem;
   font-weight: bold;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin: 0;
@@ -496,7 +499,7 @@ input[type="radio"]:checked:after {
 }
 
 .btn--chart {
-  width: 15rem;
+  width: 16rem;
   height: 4rem;
   font-size: 1.7rem;
   font-weight: bold;
@@ -590,7 +593,7 @@ input[type="radio"]:checked:after {
           transform: translateY(-12px);
   font-size: 1.7rem;
   margin: 0 auto;
-  width: 23rem;
+  width: 24rem;
 }
 
 .btn__norm--chart-r {
@@ -630,6 +633,9 @@ input[type="radio"]:checked:after {
 #bottom-btn-chart {
   display: none;
   width: 11rem;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 
 .popup {
@@ -1238,14 +1244,14 @@ input:-moz-placeholder {
   display: block;
   margin-bottom: 1rem;
   position: relative;
-  padding-left: 2rem;
+  padding-left: 6rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
   font-size: 2rem;
-  width: 36rem;
+  width: 40rem;
   -webkit-transform: translateX(34px);
           transform: translateX(34px);
 }
@@ -4965,5 +4971,11 @@ body {
   opacity: 0.35;
   cursor: auto;
   pointer-events: none;
+}
+
+@-moz-document url-prefix() {
+  .check-container {
+    padding-left: 0 !important;
+  }
 }
 /*# sourceMappingURL=main.css.map */
