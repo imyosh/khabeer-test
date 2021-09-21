@@ -497,11 +497,14 @@ window.setUpDoubleRangeSlider = () => {
                   category: selectedCategory,
                   topicTitle: selectedTopic,
                   coursePrice: selectedPrice,
-                  calculatedData: chartData,
+                  calculatedData: res.data,
                   students: Math.ceil((Number(rangeMin) + Number(rangeMax)) / 2),
                 }
 
-                // console.log(datapoint)
+                let toSubmit = userData
+                toSubmit.calculations = [datapoint]
+
+                console.log(datapoint)
                 formProps.calculations = [datapoint]
 
                 let p4 = document.getElementById("waitingfour")
@@ -510,7 +513,7 @@ window.setUpDoubleRangeSlider = () => {
                 p3.classList.remove("nextPage")
                 p4.classList.add("nextPage")
 
-                axios.post(`${server}/usersdata`, userData).then((res) => {
+                axios.post(`${server}/usersdata`, toSubmit).then((res) => {
                   // console.log(res)
 
                   if (res.data.exist) {
