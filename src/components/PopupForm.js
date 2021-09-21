@@ -410,7 +410,7 @@ window.setUpDoubleRangeSlider = () => {
     // let form = document.getElementById("swiper")
     // form.style.opacity = "0"
     // form.style.display = "none"
-
+    //
     // let p1 = document.getElementById("waitingone").classList.add("nextPage")
     // let p2 = document.getElementById("waitingtwo").classList.add("nextPage")
     // let p3 = document.getElementById("waitingthree").classList.add("nextPage")
