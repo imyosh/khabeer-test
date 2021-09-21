@@ -376,7 +376,8 @@ input[type="radio"]:checked:after {
 .btn__back {
   font-size: 2rem !important;
   position: absolute !important;
-  bottom: 2rem;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .btn--round {
