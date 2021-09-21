@@ -193,9 +193,11 @@
 
 .btn__text {
   margin-right: 15px;
+  font-family: "Josefin Sans";
 }
 
 .btn__norm {
+  font-family: "Josefin Sans";
   text-decoration: none;
   width: 11rem;
   height: 3.5rem;
@@ -270,4 +272,23 @@
   width: 11rem;
   min-width: max-content;
   // height: 4rem;
+}
+
+.btn__swip {
+  text-decoration: none;
+  width: 11rem;
+  height: 3.5rem;
+  display: inline-block;
+  border-radius: 0.5rem;
+
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.5rem;
+
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

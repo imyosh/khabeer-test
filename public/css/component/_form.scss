@@ -12,6 +12,7 @@
   max-height: 60rem;
   width: 80vw;
   height: 90vh;
+  font-family: "Josefin Sans";
 
   transition: all 0.3s;
 
@@ -151,6 +152,7 @@
     &::-webkit-input-placeholder {
       color: #c2c2c2;
       text-align: right;
+      font-family: "Josefin Sans";
     }
   }
 
@@ -286,6 +288,8 @@ input:-moz-placeholder {
 
 .check-container {
   color: #576366;
+  font-family: "Josefin Sans";
+
   display: block;
   margin-bottom: 1rem;
   position: relative;
@@ -306,6 +310,8 @@ input:-moz-placeholder {
   border: 1px solid #bec1c4;
   border-radius: 0.5rem;
   transition: background 0.3s;
+
+  transform: translateY(-2px);
 
   // input:checked ~ & {
   //   background: linear-gradient(180deg, #ffdd2d 0%, #ffab2d 100%);
@@ -370,6 +376,8 @@ input:-moz-placeholder {
   box-shadow: 0 1px 15px 1px rgba(0, 0, 0, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 
   .form-title {
+    font-family: "Josefin Sans";
+
     width: 100%;
     display: flex;
     align-items: center;
@@ -440,4 +448,8 @@ input:-moz-placeholder {
       margin-left: 8px;
     }
   }
+}
+
+.row__check {
+  margin-right: 4rem;
 }

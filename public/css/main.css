@@ -123,10 +123,12 @@ body.dark-theme {
   margin-top: 2.5rem;
   margin-right: 1rem;
   margin-left: 1rem;
+  font-family: "Josefin Sans";
 }
 
 .collect__text {
   text-align: center;
+  font-family: "Josefin Sans";
 }
 
 .collect__selected--topic {
@@ -553,9 +555,11 @@ input[type="radio"]:checked:after {
 
 .btn__text {
   margin-right: 15px;
+  font-family: "Josefin Sans";
 }
 
 .btn__norm {
+  font-family: "Josefin Sans";
   text-decoration: none;
   width: 11rem;
   height: 3.5rem;
@@ -636,6 +640,29 @@ input[type="radio"]:checked:after {
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
+}
+
+.btn__swip {
+  text-decoration: none;
+  width: 11rem;
+  height: 3.5rem;
+  display: inline-block;
+  border-radius: 0.5rem;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .popup {
@@ -972,6 +999,7 @@ input[type="radio"]:checked:after {
   max-height: 60rem;
   width: 80vw;
   height: 90vh;
+  font-family: "Josefin Sans";
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -1102,6 +1130,7 @@ input[type="radio"]:checked:after {
 .form__input::-webkit-input-placeholder {
   color: #c2c2c2;
   text-align: right;
+  font-family: "Josefin Sans";
 }
 
 .form__group {
@@ -1241,6 +1270,7 @@ input:-moz-placeholder {
 
 .check-container {
   color: #576366;
+  font-family: "Josefin Sans";
   display: block;
   margin-bottom: 1rem;
   position: relative;
@@ -1266,6 +1296,8 @@ input:-moz-placeholder {
   border-radius: 0.5rem;
   -webkit-transition: background 0.3s;
   transition: background 0.3s;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 input:checked ~ .checkmark::after {
@@ -1314,6 +1346,7 @@ input:-moz-placeholder {
 }
 
 .card-form .form-title {
+  font-family: "Josefin Sans";
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1396,6 +1429,10 @@ input:-moz-placeholder {
 
 .card-form .form-footer span {
   margin-left: 8px;
+}
+
+.row__check {
+  margin-right: 4rem;
 }
 
 .multi-range-slider {
@@ -1551,6 +1588,7 @@ input[type="range"]::-ms-thumb {
       -ms-flex-align: center;
           align-items: center;
   padding: 1rem;
+  font-family: "Josefin Sans";
   opacity: 0;
   -webkit-transition: all 0.7s;
   transition: all 0.7s;
@@ -1608,6 +1646,7 @@ input[type="range"]::-ms-thumb {
   color: #3a3a3a;
   margin-left: 5rem;
   font-weight: bold;
+  font-family: "Josefin Sans";
 }
 
 .waitingtwo {
@@ -1624,6 +1663,7 @@ input[type="range"]::-ms-thumb {
 .waitingtwo__head {
   font-size: 3.5rem;
   color: #3a3a3a;
+  font-family: "Josefin Sans";
   margin: 0 1rem;
   font-weight: bold;
   text-align: center;
@@ -1632,11 +1672,13 @@ input[type="range"]::-ms-thumb {
 .waitingtwo__text {
   font-size: 3rem;
   color: #3a3a3a;
+  font-family: "Josefin Sans";
   font-weight: bold;
 }
 
 .waitingtwo__text--second {
   color: #6ac042;
+  font-family: "Josefin Sans";
   font-size: 3.4rem;
 }
 
@@ -4432,7 +4474,7 @@ html {
 }
 
 body {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Josefin Sans";
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -4474,6 +4516,7 @@ body {
 .hero__text {
   color: white;
   font-size: 3rem;
+  font-family: "Josefin Sans";
 }
 
 .hero__icon {
@@ -4973,12 +5016,7 @@ body {
   pointer-events: none;
 }
 
-@-moz-document url-prefix() {
-  .check-container {
-    padding-left: 0 !important;
-  }
-  body {
-    font-family: initial !important;
-  }
+span {
+  font-family: "Josefin Sans";
 }
 /*# sourceMappingURL=main.css.map */

@@ -934,9 +934,9 @@ window.setUpDoubleRangeSlider = () => {
           <div className="swiper-pagination"></div>
 
           <div className="form__btns">
-            <div className="swiper-button-prev btn__norm btn__norm--gray">Previous step</div>
-            <div className="swiper-button-next btn__norm btn__norm--p">Next step</div>
-            <button id="submit" className="btn__norm btn__norm--submit">
+            <div className="swiper-button-prev btn__swip btn__norm--gray">Previous step</div>
+            <div className="swiper-button-next btn__swip btn__norm--p">Next step</div>
+            <button id="submit" className="btn__swip btn__norm--submit">
               submit
             </button>
           </div>
@@ -1049,6 +1049,7 @@ window.setUpDoubleRangeSlider = () => {
                 <div className="row">
                   <input
                     type="tel"
+                    pattern="[0-9]+"
                     name="phone"
                     placeholder="رقم تيليجرام / واتساب "
                     id="phone"
@@ -1056,7 +1057,7 @@ window.setUpDoubleRangeSlider = () => {
                   ></input>
                 </div>
 
-                <div className="row">
+                <div className="row row__check">
                   <div>
                     <label className="check-container">
                       أحب ان يتواصل معي خبير اونلاين عبر الهاتف
