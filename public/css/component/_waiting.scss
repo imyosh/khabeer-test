@@ -14,15 +14,21 @@
     display: block;
 
     &__btns {
+      // display: flex;
+
+      // position: absolute;
+      // left: 50%;
+      // gap: 1rem;
+      width: 90%;
+      // transform: translate(-50%, 0);
+
+      // bottom: 1rem;
+
       display: flex;
-
-      position: absolute;
-      left: 50%;
       gap: 1rem;
-      // width: 90%;
-      transform: translate(-50%, 0);
-
-      bottom: 1rem;
+      margin-top: 12rem;
+      margin: 0 auto;
+      justify-content: center;
     }
   }
   &__head {

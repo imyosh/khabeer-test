@@ -3,103 +3,8 @@ import React, { useEffect, useState } from "react"
 import Chart from "./Chart"
 import axios from "axios"
 
-let server = "https://khabeer-webapp.herokuapp.com"
-// let server = "http://127.0.0.1:8000"
-
-const chartOptions1 = {
-  chart: {
-    id: "chart1",
-    type: "area",
-    foreColor: "#999",
-    stacked: false,
-    dropShadow: {
-      enabled: true,
-      enabledSeries: [0],
-      top: -2,
-      left: 2,
-      blur: 5,
-      opacity: 0.06,
-    },
-  },
-  colors: ["#E04E4E", "#053A4A", "#28234A", "#3A8C84", "#2C7BCF"],
-  stroke: {
-    curve: "smooth",
-    width: 3,
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  series: [],
-  //   noData: {
-  //     text: "Loading...",
-  //   },
-  markers: {
-    size: 0,
-    strokeColor: "#fff",
-    strokeWidth: 3,
-    strokeOpacity: 1,
-    fillOpacity: 1,
-    hover: {
-      size: 6,
-    },
-  },
-  xaxis: {
-    type: "category",
-
-    // labels: {
-    //   show: true,
-    // },
-
-    axisBorder: {
-      show: false,
-    },
-    axisTicks: {
-      show: false,
-    },
-  },
-  yaxis: {
-    labels: {
-      offsetX: 14,
-      offsetY: -5,
-    },
-    tooltip: {
-      enabled: true,
-    },
-  },
-  grid: {
-    padding: {
-      left: 7,
-      right: 5,
-    },
-  },
-  tooltip: {
-    x: {
-      format: "dd MMM yyyy",
-    },
-    y: {
-      formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
-        if (value)
-          return ` 
-        ج. مصري  ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-      },
-    },
-  },
-  legend:
-    window.screen.width <= 580
-      ? {
-          position: "bottom",
-          horizontalAlign: "center",
-        }
-      : {
-          position: "top",
-          horizontalAlign: "left",
-        },
-  fill: {
-    type: "solid",
-    // fillOpacity: 0.5,
-    opacity: 0.6,
-  },
-}
+// let server = "https://khabeer-webapp.herokuapp.com"
+let server = "http://127.0.0.1:8000"
 
 const chartOptions2 = {
   chart: {
@@ -180,7 +85,7 @@ const chartOptions2 = {
     },
   },
   legend:
-    window.screen.width <= 580
+    window.screen.width <= 920
       ? {
           position: "bottom",
           horizontalAlign: "center",
@@ -194,6 +99,86 @@ const chartOptions2 = {
     // fillOpacity: 0.5,
     opacity: 0.6,
   },
+}
+
+var tchartData = {
+  avgs: {
+    hotmart: 22363,
+    teachableAndThinkifc: 2143,
+    udemy: 26231,
+    voomly: 2280,
+    voomlyPlusHosting: 2193,
+  },
+  hotmartData: [
+    [1, 18853],
+    [2, 22276],
+    [3, 20848],
+    [4, 22402],
+    [5, 22195],
+    [6, 23981],
+    [7, 22166],
+    [8, 22756],
+    [9, 23966],
+    [10, 21890],
+    [11, 24148],
+    [12, 22873],
+  ],
+  teachableAndThinkifcData: [
+    [1, 21491],
+    [2, 25347],
+    [3, 23630],
+    [4, 25386],
+    [5, 25122],
+    [6, 27139],
+    [7, 25035],
+    [8, 25682],
+    [9, 27038],
+    [10, 24643],
+    [11, 27191],
+    [12, 25713],
+  ],
+  udemyData: [
+    [1, 22381],
+    [2, 26323],
+    [3, 24549],
+    [4, 26345],
+    [5, 26069],
+    [6, 28131],
+    [7, 25970],
+    [8, 26629],
+    [9, 28013],
+    [10, 25556],
+    [11, 28160],
+    [12, 26643],
+  ],
+  voomlyData: [
+    [1, 23036],
+    [2, 27105],
+    [3, 25245],
+    [4, 27101],
+    [5, 26809],
+    [6, 28939],
+    [7, 26693],
+    [8, 27369],
+    [9, 28795],
+    [10, 26244],
+    [11, 28934],
+    [12, 27357],
+  ],
+  voomlyPlusHostingData: [
+    [1, 22057],
+    [2, 25999],
+    [3, 24225],
+    [4, 26021],
+    [5, 25745],
+    [6, 27807],
+    [7, 25646],
+    [8, 26305],
+    [9, 27689],
+    [10, 25232],
+    [11, 27836],
+    [12, 26319],
+  ],
 }
 
 function PopupForm() {
@@ -210,6 +195,8 @@ function PopupForm() {
   const [frontendData, setFrontendData] = useState({ Programming: { icon: "", subcategories: [] } })
   const [chartData, setChartData] = useState({})
 
+  const [avgRevenue, setAvgRevenue] = useState(0)
+
   const [historyChartData, setHistoryChartData] = useState({ calculatedData: {} })
 
   const [selectedCategory, setselectedCategory] = useState("Programming")
@@ -218,6 +205,136 @@ function PopupForm() {
 
   const [otherSelectedCategory, setOtherSelectedCategory] = useState("")
 
+  let legends = {
+    0: "udemy",
+    1: "hotmart",
+    2: "teachableAndThinkifc",
+    3: "voomly",
+    4: "voomlyPlusHosting",
+  }
+
+  const [toshow] = useState({ 0: "udemy" })
+
+  const chartOptions1 = {
+    chart: {
+      id: "chart1",
+      type: "area",
+      foreColor: "#999",
+      stacked: false,
+      dropShadow: {
+        enabled: true,
+        enabledSeries: [0],
+        top: -2,
+        left: 2,
+        blur: 5,
+        opacity: 0.06,
+      },
+
+      events: {
+        legendClick: function (chartContext, seriesIndex, config) {
+          console.log(seriesIndex)
+          console.log(toshow)
+
+          if (!(seriesIndex in toshow)) {
+            toshow[seriesIndex] = legends[seriesIndex]
+          } else {
+            delete toshow[seriesIndex]
+          }
+          let total = 0
+          for (let i in toshow) {
+            total = total + chartData.avgs[toshow[i]]
+          }
+
+          total = Object.keys(toshow).length === 0 ? 0 : total / Object.keys(toshow).length
+
+          console.log(toshow)
+          setAvgRevenue(
+            `${Math.round(total)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+          )
+        },
+      },
+    },
+    colors: ["#E04E4E", "#053A4A", "#28234A", "#3A8C84", "#2C7BCF"],
+    stroke: {
+      curve: "smooth",
+      width: 3,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    series: [],
+    //   noData: {
+    //     text: "Loading...",
+    //   },
+    markers: {
+      size: 0,
+      strokeColor: "#fff",
+      strokeWidth: 3,
+      strokeOpacity: 1,
+      fillOpacity: 1,
+      hover: {
+        size: 6,
+      },
+    },
+    xaxis: {
+      type: "category",
+
+      // labels: {
+      //   show: true,
+      // },
+
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      labels: {
+        offsetX: 14,
+        offsetY: -5,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    grid: {
+      padding: {
+        left: 7,
+        right: 5,
+      },
+    },
+    tooltip: {
+      x: {
+        format: "dd MMM yyyy",
+      },
+      y: {
+        formatter: function (value, { series, seriesIndex, dataPointIndex, w }) {
+          if (value)
+            return ` 
+          ج. مصري  ${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+        },
+      },
+    },
+    legend:
+      window.screen.width <= 920
+        ? {
+            position: "bottom",
+            horizontalAlign: "center",
+          }
+        : {
+            position: "top",
+            horizontalAlign: "left",
+          },
+    fill: {
+      type: "solid",
+      // fillOpacity: 0.5,
+      opacity: 0.6,
+    },
+  }
   const handleMin = (event) => {
     setRangeMin(event.target.value)
   }
@@ -225,6 +342,20 @@ function PopupForm() {
   const handleMax = (event) => {
     setRangeMax(event.target.value)
   }
+
+  // useEffect(() => {
+  //   setChartData(tchartData)
+  //   setAvgRevenue(tchartData.avgs["udemy"])
+  // }, [])
+
+  useEffect(() => {
+    if (Object.keys(chartData).length !== 0) {
+      window.ApexCharts.exec("chart1", "hideSeries", "Hotmart")
+      window.ApexCharts.exec("chart1", "hideSeries", "Teachable/Thinkifc")
+      window.ApexCharts.exec("chart1", "hideSeries", "Voomly")
+      window.ApexCharts.exec("chart1", "hideSeries", "Voomly+Hosting")
+    }
+  }, [chartData])
 
   useEffect(() => {
     if (frontendData["Programming"]["subcategories"].length === 0) {
@@ -410,7 +541,7 @@ window.setUpDoubleRangeSlider = () => {
     // let form = document.getElementById("swiper")
     // form.style.opacity = "0"
     // form.style.display = "none"
-    //
+
     // let p1 = document.getElementById("waitingone").classList.add("nextPage")
     // let p2 = document.getElementById("waitingtwo").classList.add("nextPage")
     // let p3 = document.getElementById("waitingthree").classList.add("nextPage")
@@ -480,6 +611,8 @@ window.setUpDoubleRangeSlider = () => {
         // console.log(res)
 
         setChartData(res.data)
+        setAvgRevenue(res.data.avgs["udemy"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        console.log("chart data :", res.data)
 
         setTimeout(() => {
           p1.classList.remove("nextPage")
@@ -1087,7 +1220,7 @@ window.setUpDoubleRangeSlider = () => {
             </form>
           </div>
         </div>
-        <div id="waitingfour" className="waiting waiting__chart">
+        <div id="waitingfour" style={{ overflowY: "auto" }} className="waiting waiting__chart">
           <h3 className="collect__title" style={{ marginTop: "0" }}>
             أرباحك المتوقعة خلال العام المقبل من مجال
           </h3>
@@ -1118,7 +1251,18 @@ window.setUpDoubleRangeSlider = () => {
           {Object.keys(chartData).length !== 0 ? (
             <Chart id="chart1" chartData={chartData} options={chartOptions1} />
           ) : null}
-          {/* <Chart chartData={chartData} /> */}
+          {/* <Chart options={chartOptions1} chartData={chartData} /> */}
+
+          <div className="chart__total">
+            <h3 className=" chart__total--text">متوسط ارباحك السنوية</h3>
+
+            <div className="chart__total--text--price" style={{ fontSize: "4.5rem" }}>
+              ج. مصري
+              <span id="revenue" className="waitingtwo__text--money">
+                {avgRevenue}
+              </span>
+            </div>
+          </div>
 
           <div className="btn__norm btn__norm--p btn__norm--chart-r" onClick={again}>
             كورس آخر
@@ -1128,17 +1272,19 @@ window.setUpDoubleRangeSlider = () => {
             <a
               target="_blank"
               rel="noreferrer"
-              className="btn__norm btn__norm--p btn__norm--chart"
+              className="btn__norm btn__norm--p btn__norm--chart btn__norm--submit"
               href="https://khabeer.online/Webinar"
+              style={{ width: "30rem", margin: "0" }}
             >
               حول هذه الأرقام إلى حقيقة
             </a>
 
-            <div style={{ width: "23rem", display: "flex", gap: "1rem" }}>
+            <div style={{ display: "flex", gap: "1rem" }}>
               <div
                 id="history"
                 onClick={toHistory}
                 className="btn__norm btn__norm--p btn__norm--chart disable"
+                style={{ width: "11rem" }}
               >
                 تاريخ الحسابات
               </div>
@@ -1147,6 +1293,7 @@ window.setUpDoubleRangeSlider = () => {
                 id="bottom-btn-chart"
                 className="btn__norm btn__norm--p btn__norm--chart"
                 onClick={again}
+                style={{ width: "11rem" }}
               >
                 كورس آخر
               </div>

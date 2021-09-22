@@ -69,3 +69,21 @@
   left: 66%;
   z-index: 399;
 }
+
+.chart__total {
+  margin-bottom: 5rem;
+
+  &--text {
+    font-size: 5rem;
+    color: #333333;
+    text-align: center;
+    &--price {
+      font-size: 4.5rem;
+      color: #6ac042;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

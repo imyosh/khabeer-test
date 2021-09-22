@@ -877,6 +877,31 @@ input[type="radio"]:checked:after {
   z-index: 399;
 }
 
+.chart__total {
+  margin-bottom: 5rem;
+}
+
+.chart__total--text {
+  font-size: 5rem;
+  color: #333333;
+  text-align: center;
+}
+
+.chart__total--text--price {
+  font-size: 4.5rem;
+  color: #6ac042;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .toggle {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1601,15 +1626,16 @@ input[type="range"]::-ms-thumb {
 }
 
 .waiting__chart__btns {
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
-  left: 50%;
   gap: 1rem;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
-  bottom: 1rem;
+  margin-top: 12rem;
+  margin: 0 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .waiting__head {
@@ -4717,6 +4743,9 @@ body {
 }
 
 @media screen and (max-width: 780px) {
+  .chart__total {
+    margin-bottom: 6rem;
+  }
   .waiting__img {
     width: 16rem;
   }
@@ -4772,8 +4801,13 @@ body {
 
 @media screen and (max-width: 700px) {
   .waiting__chart__btns {
-    -webkit-transform: translate(-50%, 0) scale(0.8);
-            transform: translate(-50%, 0) scale(0.8);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  .chart__total {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    margin: 0;
   }
   .waitingtwo__content {
     -webkit-box-orient: vertical;
@@ -4804,10 +4838,14 @@ body {
     font-size: 2rem;
   }
   .waiting__chart__btns {
-    -webkit-transform: translate(-50%, 0) scale(0.7);
-            transform: translate(-50%, 0) scale(0.7);
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
   }
   .btn__back {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  .chart__total {
     -webkit-transform: scale(0.7);
             transform: scale(0.7);
   }
@@ -4909,8 +4947,13 @@ body {
             transform: scale(0.9);
   }
   .waiting__chart__btns {
-    -webkit-transform: translate(-50%, 0) scale(0.7);
-            transform: translate(-50%, 0) scale(0.7);
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+    width: 100%;
+  }
+  .chart__total {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
   }
   .history__card {
     font-size: 1.45rem;
@@ -4931,7 +4974,39 @@ body {
 }
 
 /* For small devices */
+@media screen and (max-width: 420px) {
+  .waiting__chart__btns {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 @media screen and (max-width: 400px) {
+  .chart__total--text--price {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-size: 2.5rem;
+  }
+  #revenue {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
+  .chart__total {
+    -webkit-transform: scale(0.6);
+            transform: scale(0.6);
+    margin: 0;
+  }
+  .chart__total--text {
+    font-size: 4rem;
+  }
   .hero__header {
     font-size: 4rem;
   }
@@ -4997,6 +5072,16 @@ body {
 }
 
 @media screen and (max-width: 300px) {
+  .chart__total {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  .chart__total--text {
+    font-size: 3rem;
+  }
+  .chart__total--text--price {
+    font-size: 2.8rem;
+  }
   .history__card {
     font-size: 1.15rem;
   }
