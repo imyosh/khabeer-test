@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react"
 import Chart from "./Chart"
 import axios from "axios"
 
-// let server = "https://khabeer-webapp.herokuapp.com"
-let server = "http://127.0.0.1:8000"
+let server = "https://khabeer-webapp.herokuapp.com"
+// let server = "http://127.0.0.1:8000"
 
 const chartOptions2 = {
   chart: {
