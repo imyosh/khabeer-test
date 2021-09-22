@@ -1,5 +1,5 @@
 // import "./index.css"
-import React, { useEffect } from "react"
+import React from "react"
 
 import PopupForm from "./components/PopupForm"
 function App() {
@@ -7,10 +7,6 @@ function App() {
     if (navigator.onLine) document.getElementById("model").classList.add("open")
     else alert("pleas check your internt connection")
   }
-
-  useEffect(() => {
-    document.getElementById("model").classList.add("open")
-  })
 
   return (
     <div className="App">
