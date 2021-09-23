@@ -334,7 +334,7 @@ window.setUpDoubleRangeSlider = () => {
               if (navigator.onLine) {
                 let datapoint = {
                   date: new Date().toLocaleString(),
-                  category: selectedCategory,
+                  category: otherSelectedCategory === "" ? selectedCategory : otherSelectedCategory,
                   topicTitle: selectedTopic,
                   coursePrice: selectedPrice,
                   calculatedData: res.data,
