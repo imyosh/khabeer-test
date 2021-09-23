@@ -217,9 +217,9 @@
     font-size: 2rem;
   }
 
-  .waiting__chart__btns {
-    transform: scale(0.7);
-  }
+  // .waiting__chart__btns {
+  //   transform: scale(0.7);
+  // }
   .btn__back {
     transform: scale(0.7);
   }
@@ -329,7 +329,7 @@
   //////////
 
   .waiting__chart__btns {
-    transform: scale(0.7);
+    // transform: scale(0.7);
     width: 100%;
   }
   .chart__total {
@@ -477,6 +477,12 @@
 //     order: -1;
 //   }
 // }
+
+@media screen and (max-width: 350px) {
+  .chart__total--text {
+    font-size: 3.5rem;
+  }
+}
 
 @media screen and (max-width: 300px) {
   // .waiting__chart__btns {

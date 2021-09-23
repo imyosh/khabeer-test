@@ -4837,10 +4837,6 @@ body {
   .hero__text {
     font-size: 2rem;
   }
-  .waiting__chart__btns {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
-  }
   .btn__back {
     -webkit-transform: scale(0.7);
             transform: scale(0.7);
@@ -4947,8 +4943,6 @@ body {
             transform: scale(0.9);
   }
   .waiting__chart__btns {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
     width: 100%;
   }
   .chart__total {
@@ -5068,6 +5062,12 @@ body {
   }
   .history__card__date {
     font-size: 1.15rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .chart__total--text {
+    font-size: 3.5rem;
   }
 }
 
